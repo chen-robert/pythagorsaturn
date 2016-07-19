@@ -21,9 +21,9 @@ var jsonToMaze = function(json, material)
     return maze;
 };
 
-//this is a loop
+//This is a loop
 Game.run = (function() {
-    var loops = true;          //loops = 0 is the only one necessary if FPS does not fluctuate
+    var once = true;          //If FPS does not fluctuate
     var skipTicks = 1000 / Game.fps;
     //maxFrameSkip = 10,
     var nextGameTick = (new Date).getTime();
@@ -33,10 +33,10 @@ Game.run = (function() {
         while ((new Date).getTime() > nextGameTick) {
             Game.update();
             nextGameTick += skipTicks;
-            loops = false;
+            once = false;       //Looped more than once
         }
 
-        if (loops) {       //No fluctuations
+        if (once) {       //No fluctuations
             Game.draw((nextGameTick - (new Date).getTime()) / skipTicks); //Pass in elapsed time to be used later.
         } else {
             Game.draw(0);
@@ -164,7 +164,7 @@ Game.init = function() {
 };
 
 Game.update = function() {
-    if (randomInt(0,1) == 1)
+    if (Math.random > 0.5)
     {
         this.player.position.x += 15;
     }
@@ -172,7 +172,7 @@ Game.update = function() {
     {
         this.player.position.x -= 15;
     }
-    if (randomInt(0,1) == 1)
+    if (Math.random > 0.5)
     {
         this.player.position.z += 15;
     }

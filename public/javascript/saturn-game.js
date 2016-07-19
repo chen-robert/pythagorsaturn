@@ -18,7 +18,6 @@ var jsonToMaze = function(json, material)
         maze.add(new THREE.Line(lineGeometry, material));
         lineCount += 1;
     }
-    alert("Loaded maze with " + lineCount + " lines.");
     return maze;
 };
 
@@ -151,8 +150,7 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../maze/json/?' + (new Date).getTime(), function(json) {
-        alert("Loaded Json");
-        Game.maze = jsonToMaze(json, testMaterial);
+        Game.maze = jsonToMaze(json, THREE.LineBasicMaterial( { color: 0xffffff } ) );
         Game.scene.add(Game.maze);
     });
 };

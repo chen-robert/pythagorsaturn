@@ -149,7 +149,7 @@ Game.init = function() {
     var multiMaterial = [ testMaterial, wireframeMaterial ];
 
     //Load map
-    $.getJSON('../../maze/json/?' + (new Date).getTime(), function(json) {
+    $.getJSON('../../maze/' + randomInt(0,9999) + '/?' + (new Date).getTime(), function(json) {
         Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
         Game.scene.add(Game.maze);
     });

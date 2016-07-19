@@ -6,7 +6,7 @@ var Game = {fps:60, width:1080, height:720};
 
 //Game Specific Methods
 function jsonToSvg(json, width, height, scale, color, strokeWidth) {
-    var paths = JSON.parse(json);
+    var paths = json; //JSON.parse(json);
     var svg = '';
     svg += '<svg width="198px" height="55px" version="1.1" xmlns="http://www.w3.org/2000/svg">\n';
 

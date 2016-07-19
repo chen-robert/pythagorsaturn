@@ -2,7 +2,7 @@
  * Created by finnb on 7/18/16.
  */
 
-var Game = {fps:60, width:1080, height:720};
+var Game = {fps:5, width:1080, height:720};
 
 var frames = 0;
 
@@ -154,19 +154,32 @@ Game.init = function() {
         Game.scene.add(Game.maze);
     });
 
-};
-
-var resetMaze = function()
-{
-    this.scene.remove(this.maze);
-    $.getJSON('../../maze/' + randomInt(0,9999) + '/?' + (new Date).getTime(), function(json) {
-        Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
-        Game.scene.add(Game.maze);
-    });
+    // cube
+    this.player = THREE.SceneUtils.createMultiMaterialObject(
+        new THREE.CubeGeometry(10, 10, 10, 1, 1, 1),
+        multiMaterial );
+    this.player.position.set(0, 0, 0);
+    this.player.castShadow = true;
+    this.scene.add( this.player );
 };
 
 Game.update = function() {
-
+    if (randomInt(0,1) == 1)
+    {
+        this.player.position.x += 15;
+    }
+    else
+    {
+        this.player.position.x -= 15;
+    }
+    if (randomInt(0,1) == 1)
+    {
+        this.player.position.y += 15;
+    }
+    else
+    {
+        this.player.position.y -= 15;
+    }
 };
 
 Game.draw = function (time) {

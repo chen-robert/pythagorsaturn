@@ -174,11 +174,11 @@ Game.update = function() {
     }
     if (randomInt(0,1) == 1)
     {
-        this.player.position.y += 15;
+        this.player.position.z += 15;
     }
     else
     {
-        this.player.position.y -= 15;
+        this.player.position.z -= 15;
     }
 };
 

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0a4c37df-64cb-4fbd-8482-6573255a66f4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Saturn/index.html" afterPath="$PROJECT_DIR$/Saturn/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/javascript/saturn-game.js" afterPath="$PROJECT_DIR$/public/javascript/saturn-game.js" />
     </list>
     <ignored path="pythagorsaturn.iws" />
@@ -40,8 +39,8 @@
       <file leaf-file-name="saturn-game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/javascript/saturn-game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.06710158">
-              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.78191984">
+              <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -436,8 +435,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/javascript/saturn-game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06710158">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.78191984">
+          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
           <folding />
         </state>
       </provider>

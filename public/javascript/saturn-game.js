@@ -13,8 +13,8 @@ var jsonToMaze = function(json, material)
     for (var i = 0; i < json.Lines.length; i += 1)
     {
         var lineGeometry = new THREE.Geometry();
-        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x * 10, json.Lines[i].A.y * 10, 0));
-        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x * 10, json.Lines[i].B.y * 10, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x * 10, 0, json.Lines[i].A.y * 10));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x * 10, 0, json.Lines[i].B.y * 10));
         maze.add(new THREE.Line(lineGeometry, material));
         lineCount += 1;
     }
@@ -145,12 +145,12 @@ Game.init = function() {
 
     // Using wireframe materials to illustrate shape details.
     //var darkMaterial = new THREE.MeshBasicMaterial( { color: 0xffffcc } );
-    var testMaterial = new THREE.MeshLambertMaterial( { color: 0xffffcc });
+    var testMaterial = new THREE.MeshLambertMaterial( { color: 0xffffff });
     var wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, transparent: true } );
     var multiMaterial = [ testMaterial, wireframeMaterial ];
 
     //Load map
-    $.getJSON('../../maze/json/', function(json) {
+    $.getJSON('../../maze/json/' + randomInt(0,9999), function(json) {
         alert("Loaded Json");
         Game.maze = jsonToMaze(json, testMaterial);
         Game.scene.add(Game.maze);

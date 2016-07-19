@@ -13,8 +13,8 @@ var jsonToMaze = function(json, material)
     for (var i = 0; i < json.Lines.length; i += 1)
     {
         var lineGeometry = new THREE.Geometry();
-        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x, json.Lines[i].A.y));
-        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x, json.Lines[i].B.y));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x * 10, json.Lines[i].A.y * 10, 0));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x * 10, json.Lines[i].B.y * 10, 0));
         maze.add(new THREE.Line(lineGeometry, material));
         lineCount += 1;
     }

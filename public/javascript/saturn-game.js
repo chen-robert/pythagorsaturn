@@ -148,6 +148,7 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../maze/json/', function(json) {
+        alert("Loaded Json");
         Game.maze = jsonToMaze(json, testMaterial);
         Game.scene.add(Game.maze);
     });
@@ -158,6 +159,7 @@ Game.update = function() {
 };
 
 Game.draw = function (time) {
+    alert("Draw");
     //Implement skipped ticks
     this.renderer.render( this.scene, this.camera );
 };

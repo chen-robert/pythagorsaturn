@@ -4,25 +4,20 @@
 
 var Game = {fps:60, width:1080, height:720};
 
-//Game Specific Methods
-function jsonToSvg(json, width, height, scale, color, strokeWidth) {
-    var paths = json; //JSON.parse(json);
-    var svg = '';
-    svg += '<svg width="198px" height="55px" version="1.1" xmlns="http://www.w3.org/2000/svg">\n';
-
-    for(var i in paths) {
-        var path = '';
-        path += 'M' + (paths[i].mx * scale) + ' ' + (paths[i].my * scale);   // moveTo
-        path += ' L ' + (paths[i].lx * scale) + ' ' + (paths[i].ly * scale); // lineTo
-        path += ' Z';                                    // closePath
-        svg += '<path d="' + path + '"stroke="' + color + '" stroke-width="' + strokeWidth + '"/>\n';
-    }
-
-    svg += '</svg>\n';
-    return svg;
-}
-
 var frames = 0;
+
+var jsonToMaze = function(json, material)
+{
+    var maze = new THREE.Object3D();
+    for (var i = 0; i < json.Lines.length; i += 1)
+    {
+        var lineGeometry = new THREE.Geometry();
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x, json.Lines[i].A.y));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x, json.Lines[i].B.y));
+        maze.add(new THREE.Line(lineGeometry, material));
+    }
+    return maze;
+};
 
 //this is a loop
 Game.run = (function() {
@@ -126,7 +121,7 @@ Game.init = function() {
      manager.onProgress = function ( item, loaded, total ) {
      console.log( item, loaded, total );
      };
-     */
+
 
     loadObj(manager, "../public/models/test_obj.obj", function(object) {
         object.scale.x = 10;
@@ -136,6 +131,7 @@ Game.init = function() {
         Game.scene.add(object);
         Game.person = object; //Test
     });
+    */
 
     // SKYBOX/FOG
     var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
@@ -152,11 +148,8 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../maze/json/', function(json) {
-        var svgBuilt = jsonToSvg(json, 800, 600, 1, "orange", 2);
-        var svg = loadSvg(manager, window.URL.createObjectURL(svgBuilt), function (svgObj) {
-            Game.maze = new THREE.SVGObject(svgObj)
-            Game.scene.add(Game.maze);
-        });
+        Game.maze = jsonToMaze(json, testMaterial);
+        Game.scene.add(Game.maze);
     });
 };
 

@@ -150,7 +150,7 @@ Game.init = function() {
     var multiMaterial = [ testMaterial, wireframeMaterial ];
 
     //Load map
-    $.getJSON('../../maze/json/' + randomInt(0,9999), function(json) {
+    $.getJSON('../../maze/json/?' + (new Date).getTime(), function(json) {
         alert("Loaded Json");
         Game.maze = jsonToMaze(json, testMaterial);
         Game.scene.add(Game.maze);

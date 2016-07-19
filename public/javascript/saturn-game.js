@@ -9,13 +9,16 @@ var frames = 0;
 var jsonToMaze = function(json, material)
 {
     var maze = new THREE.Object3D();
+    var lineCount = 0;
     for (var i = 0; i < json.Lines.length; i += 1)
     {
         var lineGeometry = new THREE.Geometry();
         lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x, json.Lines[i].A.y));
         lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x, json.Lines[i].B.y));
         maze.add(new THREE.Line(lineGeometry, material));
+        lineCount += 1;
     }
+    alert("Loaded maze with " + lineCount + " lines.");
     return maze;
 };
 
@@ -159,7 +162,6 @@ Game.update = function() {
 };
 
 Game.draw = function (time) {
-    alert("Draw");
     //Implement skipped ticks
     this.renderer.render( this.scene, this.camera );
 };

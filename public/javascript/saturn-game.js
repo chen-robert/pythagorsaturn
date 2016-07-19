@@ -151,7 +151,7 @@ Game.init = function() {
     var multiMaterial = [ testMaterial, wireframeMaterial ];
 
     //Load map
-    $.getJSON('http://www.pythagorstudios.com/maze/json/', function(json) {
+    $.getJSON('../maze/json/', function(json) {
         var svgBuilt = jsonToSvg(json, 800, 600, 1, "orange", 2);
         var svg = loadSvg(manager, window.URL.createObjectURL(svgBuilt), function (svgObj) {
             Game.maze = new THREE.SVGObject(svgObj)

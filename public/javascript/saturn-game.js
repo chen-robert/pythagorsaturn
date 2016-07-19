@@ -153,6 +153,16 @@ Game.init = function() {
         Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
         Game.scene.add(Game.maze);
     });
+
+};
+
+var resetMaze = function()
+{
+    this.scene.remove(this.maze);
+    $.getJSON('../../maze/' + randomInt(0,9999) + '/?' + (new Date).getTime(), function(json) {
+        Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+        Game.scene.add(Game.maze);
+    });
 };
 
 Game.update = function() {

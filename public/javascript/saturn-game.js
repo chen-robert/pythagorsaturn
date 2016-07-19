@@ -150,7 +150,7 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../maze/json/?' + (new Date).getTime(), function(json) {
-        Game.maze = jsonToMaze(json, THREE.LineBasicMaterial( { color: 0xffffff } ) );
+        Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
         Game.scene.add(Game.maze);
     });
 };

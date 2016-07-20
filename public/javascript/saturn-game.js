@@ -164,7 +164,7 @@ Game.init = function() {
 };
 
 Game.update = function() {
-    if (Math.random > 0.5)
+    if (Math.random() > 0.5)
     {
         this.player.position.x += 15;
     }
@@ -172,7 +172,7 @@ Game.update = function() {
     {
         this.player.position.x -= 15;
     }
-    if (Math.random > 0.5)
+    if (Math.random() > 0.5)
     {
         this.player.position.z += 15;
     }

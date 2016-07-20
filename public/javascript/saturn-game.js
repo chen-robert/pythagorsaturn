@@ -8,15 +8,14 @@ var frames = 0;
 
 var jsonToMaze = function(json, material)
 {
-    var maze = new THREE.Object3D();
-    var lineCount = 0;
-    for (var i = 0; i < json.Lines.length; i += 1)
+    var maze = new THREE.Object3D();        //Maze for the game
+    var lineCount = json.Lines.length;      //Lines of the maze
+    for (var i = 0; i < lineCount; i ++)
     {
         var lineGeometry = new THREE.Geometry();
-        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x * 15, 0, json.Lines[i].A.y * 15));
+        lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].A.x * 15, 0, json.Lines[i].A.y * 15));       //Create random lines
         lineGeometry.vertices.push(new THREE.Vector3(json.Lines[i].B.x * 15, 0, json.Lines[i].B.y * 15));
-        maze.add(new THREE.Line(lineGeometry, material));
-        lineCount += 1;
+        maze.add(new THREE.Line(lineGeometry, material));       //Add liens to maze
     }
     return maze;
 };

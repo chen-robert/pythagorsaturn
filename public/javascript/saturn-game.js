@@ -87,7 +87,7 @@ Game.init = function() {
     // FLOOR
     var floorTexture = new THREE.ImageUtils.loadTexture( "../public/images/saturn-game-background.png" );
     floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping;
-    floorTexture.repeat.set( 2, 2 );
+    floorTexture.repeat.set( 3, 3 );
     var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side: THREE.DoubleSide } );
     var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
     var floor = new THREE.Mesh(floorGeometry, floorMaterial);

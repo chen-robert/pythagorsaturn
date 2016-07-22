@@ -1,2 +1,2 @@
 # pythagorsaturn
-A side-project.
+A side-project by Pythagor Studios.

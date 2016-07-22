@@ -9,18 +9,21 @@ var frames = 0;
 var jsonToMaze = function(json, material)
 {
     var maze = new THREE.Object3D();
+    
+    const extra = 5;        //Assuming no changes to these
+    const scale = 15;
     for (var i = 0; i < json.Lines.length; i += 1)
     {
-        var extra = 5;
-        var scale = 15;
         var line = json.Lines[i];
+        
         line.A.x *= scale;
         line.A.y *= scale;
         line.B.x *= scale;
         line.B.y *= scale;
-        var diffx = Math.abs(line.A.x - line.B.x);
+        
+        var diffx = Math.abs(line.A.x - line.B.x);      //Distance between points on x-axis
         var diffy = Math.abs(line.A.y - line.B.y);
-        var x = (line.A.x > line.B.x ? line.B.x : line.A.x);
+        var x = (line.A.x > line.B.x ? line.B.x : line.A.x);        //Rightmost point
         var y = (line.A.y > line.B.y ? line.B.y : line.A.y);
         var xCenter = x + (diffx / 2);
         var yCenter = y + (diffy / 2);
@@ -29,7 +32,7 @@ var jsonToMaze = function(json, material)
 
         var lineGeometry = new THREE.Mesh( new THREE.CubeGeometry(diffx, 1, diffy), material);
         lineGeometry.position.x = xCenter;
-        lineGeometry.position.z = yCenter;
+        lineGeometry.position.z = yCenter;      //Possible z and y confusion 
 
         maze.add(lineGeometry);
 

@@ -150,7 +150,7 @@ Game.init = function() {
 
     //Load map
     $.getJSON('../../saturnbackend/' + randomInt(0,9999) + '/?' + (new Date).getTime(), function(json) {
-        Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0xffffff } ) );
+        Game.maze = jsonToMaze(json, new THREE.LineBasicMaterial( { color: 0x660000, wireframe: true, wireframe_linewidth: 10 } ) );
         Game.scene.add(Game.maze);
     });
 

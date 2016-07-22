@@ -88,10 +88,23 @@ Game.init = function() {
         this.renderer = new THREE.CanvasRenderer();
     }
     */
-    this.renderer = new THREE.WebGLRenderer({antialias: true});
+
+    //Get the canvas elements from the DOM
+    this.rendererCanvas = document.getElementById('renderer');
+    //this.renderCanvas.width = this.width;
+    //this.renderCanvas.height = this.height;
+    this.guiCanvas = document.getElementById('gui');
+    this.guiCanvas.width = this.width;
+    this.guiCanvas.height = this.height;
+
+    this.renderer = new THREE.WebGLRenderer({canvas: this.rendererCanvas, antialias: true});
     this.renderer.setSize(this.width, this.height);
-    this.container = document.getElementById( 'game' );
-    this.container.appendChild(this.renderer.domElement);
+
+    this.guiContext = this.guiCanvas.getContext("2d", { alpha: true});
+
+    //this.container = document.getElementById( 'game' );
+    //this.container.appendChild(this.renderer.domElement);
+
 
     // EVENTS
     //THREEx.WindowResize(renderer, camera);
@@ -204,4 +217,7 @@ Game.update = function() {
 Game.draw = function (time) {
     //Implement skipped ticks
     this.renderer.render( this.scene, this.camera );
+    this.guiContext.fillStyle="#FF0000";
+    this.guiContext.font = 'italic 40pt Calibri';
+    this.guiContext.fillText("Foo", 500, 500);
 };

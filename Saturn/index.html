@@ -31,7 +31,10 @@
 </head>
 <body>
     <div class="container" style="padding:30px">
-        <div id="game" style="margin:auto; background-color:white; width:1080px; height:720px;"></div>
+        <div id="game" style="margin:auto; background-color:white; width:1080px; height:720px; position:relative; left: 0px; top:0px;">
+            <canvas id="renderer" style="z-index:0; position:absolute; left: inherit; top:inherit;"></canvas>
+            <canvas id="gui" style="z-index:1; position:absolute; left:inherit; top: inherit; "></canvas>
+        </div>
     </div>
 </body>
 </html>
